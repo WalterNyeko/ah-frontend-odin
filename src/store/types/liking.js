@@ -1,0 +1,4 @@
+export default {
+  LIKE_ARTICLE: 'LIKE_ARTICLE',
+  DISLIKE_ARTICLE: 'DISLIKE_ARTICLE',
+};

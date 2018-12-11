@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import UIReducer from './UIReducer';
+import ui from './ui';
 import articles from './article';
-import signUpReducer from './signUpReducer';
+import authentication from './authentication';
+import forms from './forms';
 
 export default combineReducers({
-  UIReducer,
+  ui,
   articles,
-  signUpReducer,
+  authentication,
+  forms,
 });

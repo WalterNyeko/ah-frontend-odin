@@ -21,8 +21,9 @@ $primary_light: #2e5b66;
 $primary_dark: #1e3d44;
 $black: #171a1b;
 $dark: #2f3739;
-$light: #bec4c6;
+$light: #fff;
 $white: #f8f9f9;
+
 $accent: #dd9d45;
 /**
  * Typography and fonts
@@ -35,3 +36,8 @@ $h2-font-size: 2.827rem !default;
 $h3-font-size: 1.999rem !default;
 $h4-font-size: 1.414rem !default;
 $small-font-size: 0.707rem;
+
+/**
+ * body color
+ */
+$body-bg: #fff !default;

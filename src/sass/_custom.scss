@@ -1,0 +1,91 @@
+.navbar {
+  border-top: 5px solid $accent;
+  .navbar-brand {
+    img {
+      height: 50px;
+    }
+  }
+}
+
+.card {
+  box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.302), 0 1px 1px 1px rgba(60, 64, 67, 0.149);
+}
+svg {
+  fill: currentColor;
+}
+.btn {
+  svg {
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-bottom: 5px;
+  }
+}
+.btn-link {
+  border: none;
+  color: currentColor;
+  background-color: transparent;
+  &:active {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+    outline: none;
+  }
+}
+.user-avatar {
+  width: 50px;
+  height: 50px;
+}
+
+.btn-primary {
+  border-color: none;
+  border: none;
+}
+
+.dislike {
+  &:active {
+    color: rgb(233, 34, 34);
+  }
+  &:hover {
+    cursor: pointer;
+    outline: none;
+    color: rgb(233, 34, 34);
+  }
+}
+
+.like {
+  &:active {
+    color: #23aa4e;
+  }
+  &:hover {
+    cursor: pointer;
+    outline: none;
+    color: #23aa4e;
+  }
+}
+.btn{
+  svg{
+    height:1rem;
+    width:1rem;
+    fill:currentColor;
+  }
+}
+
+.facebookIcon {
+  svg{
+    fill: #415A93;
+    height:2rem; 
+    width:2rem;
+  }
+}
+
+.googleIcon {
+  svg{
+    fill: #D95040;
+    height:2rem; 
+    width:2rem;
+  }
+}
+label.has-input {
+  width: 100%;
+}

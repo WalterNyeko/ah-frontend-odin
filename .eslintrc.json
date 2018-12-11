@@ -19,12 +19,19 @@
       }
     ],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/button-has-type": ["off"],
     "react/prefer-stateless-function": [1, { "ignorePureComponents": true }],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/prefer-default-export": ["off"],
+    "import/no-named-as-default": ["off"],
     "react/forbid-prop-types": [false],
-    "react/destructuring-assignment": ["off"]
+    "react/destructuring-assignment": ["off"],
+    "jsx-a11y/label-has-associated-control": ["off"],
+    "jsx-a11y/label-has-for": ["off"],
+    "react/no-array-index-key": ["off"],
+    "react/no-multi-comp": ["disnabled", { "ignoreStateless": true }]
   },
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true

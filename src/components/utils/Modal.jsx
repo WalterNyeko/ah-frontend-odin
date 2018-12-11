@@ -47,7 +47,6 @@ class Modal extends React.Component {
     return (
       <div
         className="modal fade"
-        id="modal"
         tabIndex="-1"
         role="dialog"
         aria-hidden="true"

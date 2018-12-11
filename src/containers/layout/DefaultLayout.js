@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NavBar from 'components/layout/NavBar';
-import { connect } from 'react-redux';
-import { showSignUp } from 'store/actions/actionCreators';
+import NavBarComponent from './NavBar';
+import UILoader from './UILoader';
 
-const DefaultLayout = ({ children, className, showSignUpModal }) => (
+const DefaultLayout = ({ children, className }) => (
   <div className={className}>
-    <NavBar showSignUpModal={showSignUpModal} />
+    <UILoader />
+    <NavBarComponent />
     <div className="main">{children}</div>
   </div>
 );
@@ -18,14 +18,6 @@ DefaultLayout.defaultProps = {
 DefaultLayout.propTypes = {
   children: PropTypes.any.isRequired,
   className: PropTypes.any,
-  showSignUpModal: PropTypes.func.isRequired,
 };
 
-export const mapActionsToProps = dispatch => ({
-  showSignUpModal: () => dispatch(showSignUp(true)),
-});
-
-export default connect(
-  null,
-  mapActionsToProps,
-)(DefaultLayout);
+export default DefaultLayout;

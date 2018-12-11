@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuestLinks It renders the same UI 1`] = `
+Array [
+  <li
+    className="nav-item"
+  >
+    <button
+      className="nav-link text-light btn-link"
+      data-id="login"
+      onClick={[Function]}
+    >
+      login
+    </button>
+  </li>,
+  <li
+    className="nav-item"
+  >
+    <button
+      className="nav-link text-light btn-link"
+      data-id="signup"
+      onClick={[Function]}
+    >
+      Register
+    </button>
+  </li>,
+]
+`;

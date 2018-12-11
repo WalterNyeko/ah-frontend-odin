@@ -1,13 +1,13 @@
 import { prepareUrl } from './helpers';
 
 /**
- * A wrapper around the Http class
+ * A wrapper around the Fetch API
  */
 class Http {
   /**
    * Creates an instance of the http class
    * @param  {String} baseUrl
-   * @return {self}
+   * @return {Http}
    */
   constructor(baseUrl) {
     this.baseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
@@ -17,16 +17,42 @@ class Http {
     this.registerHooks();
     this.onSucess = this.onSucess.bind(this);
     this.handleFailure = this.handleFailure.bind(this);
+    this.afterRequest = this.afterRequest.bind(this);
+    this.token = null;
+    this.requiresAuthentication = false;
   }
 
   /**
    * Sets the authentication token
-   * @param {String} token
+   * @param {String|null} token
    * @param {String} prefix
    */
-  setToken(token, prefix = 'Bearer') {
-    this.headers.Authorization = `${prefix} ${token}`;
+  setToken(token = null, prefix = 'Bearer') {
+    if (token) {
+      this.token = `${prefix} ${token}`;
+    }
     return this;
+  }
+
+  /**
+   * Adds the authentication Header for the next request
+   * @param  {String|null} token
+   * @param  {String} prefix
+   * @return {Http}
+   */
+  withAuthentication(token = null, prefix = 'Bearer') {
+    this.requiresAuthentication = true;
+    return this.setToken(token, prefix);
+  }
+
+  /**
+   * After every request callback
+   */
+  afterRequest() {
+    this.fireHook('onFinished');
+    // turn off the requires authentication if the developer had turned it own before
+    // the request so that it doesnot affect next requests
+    this.requiresAuthentication = false;
   }
 
   /**
@@ -99,10 +125,17 @@ class Http {
    * @return {Object}
    */
   makeOptions(method, data) {
+    const { headers } = this;
+
+    // if the user specifies withAuthentication, we will add the authentication Header
+    if (this.requiresAuthentication) {
+      headers.Authorization = this.token;
+    }
+
     const options = {
       method,
+      headers,
       mode: 'cors',
-      headers: this.headers,
     };
 
     if (data) {
@@ -125,7 +158,7 @@ class Http {
       .fetch(prepareUrl(url), this.makeOptions(method, data))
       .then(this.onSucess)
       .catch(this.handleFailure)
-      .finally(/* istanbul ignore next */ () => this.fireHook('onFinished'));
+      .finally(this.afterRequest);
   }
 
   /**
@@ -168,7 +201,6 @@ class Http {
    * @param  {Response} response
    * @return {Promise}
    */
-  /* istanbul ignore next line */
   static convertResponse(response) {
     const contentType = response.headers.get('content-type').toLowerCase();
 
