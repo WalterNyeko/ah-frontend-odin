@@ -18,4 +18,4 @@ export const updateErrors = (form, errors) => ({
 export const resetForm = form => ({ type: types.RESET_FORM, form });
 
 export const submitForm = ({ url, method, data }) => (dispatch, getState, http) =>
-  http[method](url, data);
+  http.withAuthentication()[method](url, data);

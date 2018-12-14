@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { errorMessage } from 'helpers/toast';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -25,7 +24,7 @@ class SignupForm extends Component {
     if (this.state.password === this.state.confirmPassword) {
       this.signup();
     } else {
-      errorMessage('Passwords do not match');
+      window.Notify.error('Passwords do not match');
     }
   }
 
@@ -103,7 +102,9 @@ class SignupForm extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Sign Up" className="btn btn-primary btn-lg" />
+          <button type="submit" className="btn btn-primary btn-block">
+            Sign Up
+          </button>
         </div>
       </form>
     );

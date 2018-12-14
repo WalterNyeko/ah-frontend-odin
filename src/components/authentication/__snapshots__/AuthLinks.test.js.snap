@@ -25,6 +25,7 @@ Array [
   >
     <button
       className="nav-link text-light btn-link"
+      onClick={[MockFunction]}
     >
       Logout
     </button>

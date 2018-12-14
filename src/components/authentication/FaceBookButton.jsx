@@ -10,7 +10,7 @@ const FacebookButton = ({ onSuccessHandler }) => (
     fields="name,email"
     callback={onSuccessHandler}
     render={renderProps => (
-      <button onClick={renderProps.onClick} className="btn btn-link facebookIcon">
+      <button onClick={renderProps.onClick} className="btn btn-link facebookIcon" type="button">
         {' '}
         <FacebookIcon />
       </button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from 'forms/index';
+import Form from 'forms';
 import { NavLink } from 'react-router-dom';
 import Input from 'forms/Input';
 import SocialButtons from './SocialButtons';

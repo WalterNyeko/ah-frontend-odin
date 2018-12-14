@@ -1,6 +1,13 @@
 @import 'variables';
 @import 'bootstrap_overides';
 @import 'bootstrap';
-@import 'custom';
 @import 'pages';
+@import 'custom';
+@import 'animations';
+
+/* components */
 @import 'ui-loader';
+@import 'articles';
+@import 'tag-input';
+
+@import '~sweetalert2/src/sweetalert2';

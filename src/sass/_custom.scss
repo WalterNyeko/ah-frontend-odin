@@ -10,20 +10,16 @@
 .card {
   box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.302), 0 1px 1px 1px rgba(60, 64, 67, 0.149);
 }
-
-label.has-input {
-  width: 100%;
+svg {
+  fill: currentColor;
 }
-
-#notification-wrapper {
-  z-index: 999999999;
-  position: absolute;
+.btn {
+  svg {
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-bottom: 5px;
+  }
 }
-
-#signUpModalDialog {
-  margin-top: 200px;
-}
-
 .btn-link {
   border: none;
   color: currentColor;
@@ -41,26 +37,60 @@ label.has-input {
   height: 50px;
 }
 
-.btn{
-  svg{
-    height:1rem;
-    width:1rem;
-    fill:currentColor;
+.btn {
+  svg {
+    height: 1rem;
+    width: 1rem;
+    fill: currentColor;
   }
 }
 
 .facebookIcon {
-  svg{
-    fill: #415A93;
-    height:2rem; 
-    width:2rem;
+  svg {
+    fill: #415a93;
+    height: 2rem;
+    width: 2rem;
   }
 }
 
 .googleIcon {
-  svg{
-    fill: #D95040;
-    height:2rem; 
-    width:2rem;
+  svg {
+    fill: #d95040;
+    height: 2rem;
+    width: 2rem;
   }
+}
+label.has-input {
+  width: 100%;
+}
+
+.star-rating {
+  border: solid 0px #ccc;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.2em;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 4em;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  color: black;
+  cursor: pointer;
+}
+.star-rating {
+  color: #f90;
+  cursor: pointer;
+}
+.star-rating :checked ~ label {
+  color: #f90;
+}
+
+.star-rating :hover {
+  color: #fc0;
 }

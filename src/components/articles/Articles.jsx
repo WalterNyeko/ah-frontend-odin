@@ -4,8 +4,8 @@ import Article from './Article';
 
 const Articles = ({ articles }) => (
   <div>
-    {articles.map(article => (
-      <Article article={article} key={article.slug} />
+    {articles.map((article, index) => (
+      <Article article={article} key={index} />
     ))}
   </div>
 );
