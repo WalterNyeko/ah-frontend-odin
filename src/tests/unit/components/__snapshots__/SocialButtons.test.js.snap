@@ -2,8 +2,9 @@
 
 exports[`Test social login buttons Facebook Button 1`] = `
 <button
-  className="btn btn-link"
+  className="btn btn-link facebookIcon"
   onClick={[Function]}
+  type="button"
 >
    
   <svg
@@ -19,7 +20,7 @@ exports[`Test social login buttons Facebook Button 1`] = `
 
 exports[`Test social login buttons Google Button 1`] = `
 <button
-  className="btn btn-link"
+  className="btn btn-link googleIcon"
   onClick={[Function]}
   type="button"
 >

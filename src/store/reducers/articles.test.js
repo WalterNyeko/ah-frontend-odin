@@ -1,5 +1,6 @@
 import articleReducer from 'store/reducers/article';
 import types from 'store/types/articles';
+import Factory from 'tests/factory';
 
 let initialState;
 let articles;
@@ -23,5 +24,17 @@ describe('Article reducer', () => {
     });
 
     expect(newState.all).toHaveLength(1);
+  });
+
+  test('SET_SINGLE sets a single article', () => {
+    const initial = { single: null };
+    const article = Factory.of('article').make();
+
+    const newState = articleReducer(initial, {
+      type: types.SET_SINGLE,
+      article,
+    });
+
+    expect(newState.single).toEqual(article);
   });
 });

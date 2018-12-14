@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Form from 'forms/index';
-import { NavLink } from 'react-router-dom';
+import Form from 'forms';
 import Input from 'forms/Input';
 import SocialButtons from './SocialButtons';
 
-const LoginForm = ({ successSubmit, handleAuthentication }) => (
+const LoginForm = ({ successSubmit, handleAuthentication, showResetPassword }) => (
   <Form
     name="login-form"
     button={{ className: 'btn-primary btn-block', text: 'Login' }}
@@ -15,7 +14,9 @@ const LoginForm = ({ successSubmit, handleAuthentication }) => (
     slot={
       <div>
         <hr />
-        <NavLink to="/request_reset">Forgot Password?</NavLink>
+        <button type="button" onClick={showResetPassword} className="btn-link">
+          Forgot Password?
+        </button>
         <div className="text-center">
           <p>Or signup with</p>
           <div className="offset-5">
@@ -33,6 +34,7 @@ const LoginForm = ({ successSubmit, handleAuthentication }) => (
 LoginForm.propTypes = {
   successSubmit: PropTypes.func.isRequired,
   handleAuthentication: PropTypes.func.isRequired,
+  showResetPassword: PropTypes.func.isRequired,
 };
 
 export default LoginForm;

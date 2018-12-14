@@ -10,20 +10,16 @@
 .card {
   box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.302), 0 1px 1px 1px rgba(60, 64, 67, 0.149);
 }
-
-label.has-input {
-  width: 100%;
+svg {
+  fill: currentColor;
 }
-
-#notification-wrapper {
-  z-index: 999999999;
-  position: absolute;
+.btn {
+  svg {
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-bottom: 5px;
+  }
 }
-
-#signUpModalDialog {
-  margin-top: 200px;
-}
-
 .btn-link {
   border: none;
   color: currentColor;
@@ -63,4 +59,7 @@ label.has-input {
     height:2rem; 
     width:2rem;
   }
+}
+label.has-input {
+  width: 100%;
 }

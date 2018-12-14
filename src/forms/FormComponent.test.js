@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import { FormComponent, mapActionsToProps } from '.';
+import { FormComponent, mapActionsToProps } from './FormComponent';
 import Input from './Input';
 
 const defaultProps = {
@@ -76,7 +76,8 @@ describe('FormComponent', () => {
     });
 
     wrapper.find('form').simulate('submit', { preventDefault: () => {} });
-    expect(handleSubmit).toHaveBeenCalledWith(data);
+
+    expect(handleSubmit.mock.calls[0][0]).toEqual(data);
   });
 
   test('beforeSubmit is triggered with the form data', () => {
@@ -90,7 +91,8 @@ describe('FormComponent', () => {
     });
 
     wrapper.find('form').simulate('submit', { preventDefault: () => {} });
-    expect(beforeSubmit).toHaveBeenCalledWith(data);
+
+    expect(beforeSubmit.mock.calls[0][0]).toEqual(data);
   });
 
   test('it triggers the component form action ', () => {

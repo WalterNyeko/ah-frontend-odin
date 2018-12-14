@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage It renders the same UI 1`] = `
+<div
+  className="indexPage"
+>
+  <div
+    className="ui-loader"
+  >
+    <svg
+      height="38"
+      stroke="#fff"
+      viewBox="0 0 38 38"
+      width="38"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        fillRule="evenodd"
+      >
+        <g
+          strokeWidth="2"
+          transform="translate(1 1)"
+        >
+          <circle
+            cx="18"
+            cy="18"
+            r="18"
+            strokeOpacity=".5"
+          />
+          <path
+            d="M36 18c0-9.94-8.06-18-18-18"
+          >
+            <animateTransform
+              attributeName="transform"
+              dur="1s"
+              from="0 18 18"
+              repeatCount="indefinite"
+              to="360 18 18"
+              type="rotate"
+            />
+          </path>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <nav
+    className="navbar navbar-expand-lg navbar-dark bg-primary mb-2"
+  >
+    <a
+      aria-current="page"
+      className="navbar-brand d-flex align-items-center active"
+      href="/"
+      onClick={[Function]}
+      style={Object {}}
+    >
+      <img
+        alt="Author Havens Logo"
+        src="logo.png"
+      />
+      <span
+        className="h3 font-weight-bold  pl-1"
+      >
+         Authors Haven 
+      </span>
+    </a>
+    <button
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      className="navbar-toggler"
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      className="collapse navbar-collapse"
+      id="navbarSupportedContent"
+    >
+      <ul
+        className="navbar-nav"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            aria-current={null}
+            className="nav-link"
+            href="/articles"
+            onClick={[Function]}
+          >
+            Articles
+          </a>
+        </li>
+      </ul>
+      <ul
+        className="navbar-nav ml-auto"
+      >
+        <li
+          className="nav-item"
+        >
+          <button
+            className="nav-link text-light btn-link"
+            data-id="login"
+            onClick={[Function]}
+          >
+            login
+          </button>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <button
+            className="nav-link text-light btn-link"
+            data-id="signup"
+            onClick={[Function]}
+          >
+            Register
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div
+    className="main"
+  >
+    <div
+      className="container"
+    >
+      <h2
+        className="text-center"
+      >
+        Latest Articles
+      </h2>
+      <div
+        className="mt-3"
+      >
+        <div />
+      </div>
+    </div>
+    <section
+      className="p-3 bg-primary text-white"
+    >
+      <div
+        className="container-fluid"
+      >
+        <h3>
+          Join Authors Haven
+        </h3>
+        <p
+          className="mt-3"
+        >
+          A Social platform for like-minded authors to foster inspiration and innovation by leveraging the modern web to enable authors share original content, target articles to an audience that finds them relevant and more.
+        </p>
+        <div
+          className="d-flex justify-content-end"
+        >
+          <button
+            className="btn join-button"
+            onClick={[Function]}
+            type="submit"
+          >
+            SignUp
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+`;

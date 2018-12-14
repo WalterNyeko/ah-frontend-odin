@@ -1,5 +1,4 @@
 import types from 'store/types/forms';
-
 /**
  * Updates a given form's value
  * @param  {Object} state
@@ -20,7 +19,6 @@ const updateFormValue = (state, payload) => {
     },
   };
 };
-
 /**
  * Updates a given's forms errors
  * @param  {Object} state
@@ -56,6 +54,7 @@ const resetForm = (state, form) => ({
  * @param  {Object} action
  * @return {Object}        next state
  */
+
 export default (state = {}, action) => {
   switch (action.type) {
     case types.REGISTER_FORM:

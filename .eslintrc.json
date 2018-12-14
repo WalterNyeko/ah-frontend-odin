@@ -23,6 +23,7 @@
     "react/prefer-stateless-function": [1, { "ignorePureComponents": true }],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/prefer-default-export": ["off"],
+    "import/no-named-as-default": ["off"],
     "react/forbid-prop-types": [false],
     "react/destructuring-assignment": ["off"],
     "jsx-a11y/label-has-associated-control": ["off"],

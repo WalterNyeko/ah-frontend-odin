@@ -1,6 +1,7 @@
 import { pick, isObjectLike, get, zipObject } from 'lodash';
+import { getAllArticles } from 'store/actions/articles';
 
-const mapStateToProps = props => state => {
+export const mapStateToProps = props => state => {
   if (Array.isArray(props)) return pick(state, props);
 
   if (isObjectLike(props)) {
@@ -13,6 +14,7 @@ const mapStateToProps = props => state => {
   return {};
 };
 
-export { mapStateToProps };
+export const getArticles = ({ articles }) => ({ articles: articles.all });
 
+export const fetAllArticles = dispatch => ({ fetchAllArticles: () => dispatch(getAllArticles()) });
 export default mapStateToProps;

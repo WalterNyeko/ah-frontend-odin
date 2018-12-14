@@ -17,7 +17,6 @@ describe('Authentication Modals', () => {
       ),
     ).not.toThrow();
   });
-
   test('it can trigger all store actions', () => {
     const dispatch = jest.fn();
     const actions = mapActionsToProps(dispatch);

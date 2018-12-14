@@ -1,13 +1,13 @@
 import { prepareUrl } from './helpers';
 
 /**
- * A wrapper around the Http class
+ * A wrapper around the Fetch API
  */
 class Http {
   /**
    * Creates an instance of the http class
    * @param  {String} baseUrl
-   * @return {self}
+   * @return {Http}
    */
   constructor(baseUrl) {
     this.baseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
