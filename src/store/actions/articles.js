@@ -9,6 +9,7 @@ export const setArticles = articles => ({ type: types.SET_ARTICLES, articles });
 export const setSingle = article => ({ type: types.SET_SINGLE, article });
 
 export const addComment = comment => ({ type: types.ADD_COMMENT, comment });
+
 export const setComments = comments => ({ type: types.SET_COMMENTS, comments });
 
 export const fetchArticleBySlug = slug => (dispatch, getState, http) =>
