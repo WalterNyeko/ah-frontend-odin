@@ -16,6 +16,19 @@ export default (state = initialState, payload) => {
       return { ...state, single: payload.article };
     case types.SET_ARTICLES:
       return { ...state, all: payload.articles };
+
+    case types.SET_COMMENTS:
+      return { ...state, single: { ...state.single, comments: payload.comments } };
+
+    case types.ADD_COMMENT:
+      return {
+        ...state,
+        single: {
+          ...state.single,
+          comments: state.single.comments.concat(payload.comment),
+        },
+      };
+
     default:
       return state;
   }

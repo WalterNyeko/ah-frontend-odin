@@ -1,7 +1,6 @@
 import types from 'store/types/authentication';
 
 export const showAuthModal = name => ({ type: types.SHOW_MODAL, name });
-
 export const hideAuthModal = name => ({ type: types.HIDE_MODAL, name });
 export const setUser = user => ({ type: types.LOGIN_USER, user });
 export const unsetUser = () => ({ type: types.UNSET_USER });
@@ -33,9 +32,12 @@ export const socialAuthentication = (url, accessToken) => (dispatch, getState, h
     dispatch(hideAuthModal('login'));
   });
 
-export const logoutUser = history => dispatch =>
+export const logoutUser = history => (dispatch, getState, http) =>
   window.Notify.confirm('You will be logged out of the application').then(() => {
     window.Notify.success('You were successfully logged out of the system');
     history.push('/');
+    // we will clear any available tokens
+    http.clearToken();
+
     return dispatch(unsetUser());
   });

@@ -37,4 +37,29 @@ describe('Article reducer', () => {
 
     expect(newState.single).toEqual(article);
   });
+
+  test('SET_COMMENTS', () => {
+    const initial = { single: Factory.of('article').make() };
+    const comments = Factory.of('comment').make(2);
+
+    const newState = articleReducer(initial, {
+      type: types.SET_COMMENTS,
+      comments,
+    });
+
+    expect(newState.single.comments).toEqual(comments);
+  });
+
+  test('ADD_COMMENT', () => {
+    const article = Factory.of('article').make();
+    const initial = { single: article };
+    const comment = Factory.of('comment').make();
+
+    const newState = articleReducer(initial, {
+      type: types.ADD_COMMENT,
+      comment,
+    });
+
+    expect(newState.single.comments).toEqual(article.comments.concat(comment));
+  });
 });

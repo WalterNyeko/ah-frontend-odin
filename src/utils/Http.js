@@ -35,6 +35,16 @@ class Http {
   }
 
   /**
+   * clears the authentication token
+   */
+  clearToken() {
+    this.token = null;
+    this.requiresAuthentication = false;
+
+    return this;
+  }
+
+  /**
    * Adds the authentication Header for the next request
    * @param  {String|null} token
    * @param  {String} prefix

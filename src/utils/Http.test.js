@@ -47,6 +47,12 @@ describe('Http tests', () => {
     });
   });
 
+  test('it clears the token', () => {
+    http.setToken('some-token');
+    http.clearToken();
+    expect(http.token).toEqual(null);
+  });
+
   test('test with authentication sets token ', () => {
     fetch.post(prepareUrl('some-url'), makeResponse());
 

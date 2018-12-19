@@ -1,6 +1,8 @@
 import mockStore from 'tests/mockStore';
 import types from 'store/types/articles';
+import { sortByUpdatedAt } from 'store/helpers';
 import { prepareUrl } from 'utils/helpers';
+import Factory from 'tests/factory';
 
 import {
   addArticle,
@@ -8,6 +10,7 @@ import {
   getAllArticles,
   setSingle,
   fetchArticleBySlug,
+  setComments,
 } from 'store/actions/articles';
 
 describe('Article action tests', () => {
@@ -35,16 +38,23 @@ describe('Article action tests', () => {
       expect.objectContaining({ type: types.SET_SINGLE, article }),
     );
   });
-  test('getAllArticles dispatches the right type', () => {
-    const articles = [{ updated_at: '2018-12-14' }, { updated_at: '2018-12-01' }];
+  test('getAllArticles sorts the articles by updated_at', () => {
+    const results = Factory.of('article').make(2);
     const store = mockStore({ articles: { all: [] } });
-    const expectedActions = [{ type: types.SET_ARTICLES, articles }];
+    const expectedActions = [{ type: types.SET_ARTICLES, articles: sortByUpdatedAt(results) }];
+
     fetch.restore();
-    fetch.get(prepareUrl('articles'), { body: { article: articles } });
+    fetch.get(prepareUrl('articles'), { body: { article: { results } } });
 
     store.dispatch(getAllArticles()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
       fetch.restore();
     });
+  });
+
+  test('setComments action', () => {
+    const comments = Factory.of('article').make(2);
+
+    expect(setComments(comments)).toEqual({ type: types.SET_COMMENTS, comments });
   });
 });

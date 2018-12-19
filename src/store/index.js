@@ -23,7 +23,12 @@ http.onStart(() => store.dispatch(activateLoading()));
 http.onFinished(() => store.dispatch(deactivateLoading()));
 
 /* istanbul ignore next */
-http.onFail(() => window.Notify.error("Something didn't go right"));
+
+http.onFail(error => {
+  const message = (error && (error.message || error.detail)) || 'Something went wrong';
+
+  window.Notify.error(message);
+});
 // we will temporarily set the token from the local storage if it exists
 http.setToken(get(JSON.parse(localStorage.getItem('user')), 'token'));
 

@@ -11,6 +11,7 @@ describe('UnAuthorized', () => {
 
     expect(wrapper.find('Redirect')).toHaveLength(1);
   });
+
   test('It shows the right message if not authenticated', () => {
     const wrapper = shallow(<UnAuthorized user={null} />);
 
