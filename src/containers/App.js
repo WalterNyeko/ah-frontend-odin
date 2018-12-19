@@ -24,6 +24,7 @@ const App = () => (
           <Route path="/articles" exact component={ArticlesPage} />
           <Route path="/articles/create" exact component={CreateArticlePage} />
           <Route path="/articles/:slug" exact component={ShowArticle} />
+          <Route path="/articles/:slug/bookmark" exact component={ShowArticle} />
           <Route path="/unauthorized" exact component={UnAuthotized} />
           <Route component={PageNotFound} />
         </Switch>

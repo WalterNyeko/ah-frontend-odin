@@ -4,7 +4,7 @@ import TagList from './TagList';
 import ArticleFooter from './ArticleFooter';
 import Comments from './comments/Comments';
 
-const Article = ({ article, user, addComment }) => {
+const Article = ({ article, user, addComment, bookmarkHandler, slug, result }) => {
   const { title, body } = article;
 
   return (
@@ -18,7 +18,12 @@ const Article = ({ article, user, addComment }) => {
           </div>
         </div>
         <div className="card-footer">
-          <ArticleFooter article={article} />
+          <ArticleFooter
+            article={article}
+            result={result}
+            slug={slug}
+            bookmarkHandler={bookmarkHandler}
+          />
         </div>
       </div>
 
@@ -32,6 +37,9 @@ Article.propTypes = {
   article: PropTypes.object.isRequired,
   user: PropTypes.object,
   addComment: PropTypes.func.isRequired,
+  bookmarkHandler: PropTypes.func,
+  slug: PropTypes.any,
+  result: PropTypes.any,
 };
 
 export default Article;
