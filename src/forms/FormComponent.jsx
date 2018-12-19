@@ -235,7 +235,7 @@ class FormComponent extends React.Component {
     const { method, action, slot } = this.props;
 
     return (
-      <form method={method} action={action} onSubmit={this.submit}>
+      <form method={method} action={action} onSubmit={this.submit} className="w-100">
         {this.renderGenericErrors()}
         {this.renderFormChildren()}
         {this.renderButton()}

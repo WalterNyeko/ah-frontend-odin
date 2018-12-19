@@ -7,7 +7,7 @@ describe('ArticleWithDetails tests', () => {
   test('Article with details renders Article footer', () => {
     const article = Factory.of('article').make();
 
-    const wrapper = shallow(<ArticleWithDetails article={article} />);
+    const wrapper = shallow(<ArticleWithDetails article={article} addComment={jest.fn()} />);
 
     expect(wrapper.find('ArticleFooter')).toHaveLength(1);
   });

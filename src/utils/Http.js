@@ -35,6 +35,16 @@ class Http {
   }
 
   /**
+   * clears the authentication token
+   */
+  clearToken() {
+    this.token = null;
+    this.requiresAuthentication = false;
+
+    return this;
+  }
+
+  /**
    * Adds the authentication Header for the next request
    * @param  {String|null} token
    * @param  {String} prefix
@@ -181,7 +191,7 @@ class Http {
         this.fireHook('onPass', data);
         return Promise.resolve(data);
       }
-
+      /* istanbul ignore next */
       return this.handleFailure(data);
     });
   }

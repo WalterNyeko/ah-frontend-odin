@@ -8,7 +8,8 @@ export default (faker, Factory) => ({
   body: faker.lorem.paragraphs(4),
   slug: faker.lorem.slug(),
   tagList: take(faker.helpers.shuffle(tags), 2),
-  created_at: faker.date.recent(),
+  created_at: faker.date.recent().toLocaleDateString(),
   author: Factory.of('user').make(),
-  updated_at: faker.date.recent(),
+  updated_at: faker.date.recent().toLocaleDateString(),
+  comments: Factory.of('comment').make(2),
 });

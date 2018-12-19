@@ -63,3 +63,16 @@ svg {
 label.has-input {
   width: 100%;
 }
+
+.social {
+  &:hover {
+    cursor: pointer;
+    animation-name: pulse;
+  }
+}
+
+.social-sec {
+  align-self: auto;
+  padding: 2vw;
+  // position: fixed;
+}

@@ -46,7 +46,7 @@ class Notify {
         title,
         type: 'question',
         showCancelButton: true,
-      }).then(/* istanbul ignore next */ result => (result.value ? resolve() : null));
+      }).then(result => (result.value ? resolve() : null));
     });
   }
 }

@@ -17,4 +17,13 @@ export const mapStateToProps = props => state => {
 export const getArticles = ({ articles }) => ({ articles: articles.all });
 
 export const fetAllArticles = dispatch => ({ fetchAllArticles: () => dispatch(getAllArticles()) });
+
+export const sortByUpdatedAt = data => {
+  const toDate = object => {
+    const updatedAt = object.updated_at || object.updatedAt;
+    return (updatedAt && new Date(updatedAt)) || 0;
+  };
+  return data.sort((a, b) => toDate(b) - toDate(a));
+};
+
 export default mapStateToProps;

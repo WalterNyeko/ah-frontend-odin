@@ -18,13 +18,14 @@ const createWrapper = (
     match={{ params: { slug: 'title' } }}
     selectedArticle={selectedArticle}
     fetchSingleArticle={fetchSingleArticle}
+    addArticleComment={jest.fn()}
     loading={loading}
   />
 );
 
 describe('ShowArticle tests', () => {
   test('it renders without crashing', () => {
-    const fetchSingleArticle = jest.fn();
+    const fetchSingleArticle = jest.fn(() => Factory.of('article').make());
     mount(
       <Provider store={store}>
         <MemoryRouter>
