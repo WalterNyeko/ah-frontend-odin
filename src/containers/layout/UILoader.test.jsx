@@ -10,6 +10,7 @@ describe('UI Loader', () => {
 
   test('it does not shows loader icon when loading is false', () => {
     const wrapper = shallow(<Loader loading={false} />);
+
     expect(wrapper.find('.ui-loader')).toHaveLength(0);
   });
 });
