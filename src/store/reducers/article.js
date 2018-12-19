@@ -1,6 +1,6 @@
 import types from 'store/types/articles';
 
-const initialState = { all: [], single: null };
+const initialState = { all: [], single: null, article_rate: {} };
 
 const addArticle = (state, article) => {
   const articles = state.all;
@@ -29,6 +29,8 @@ export default (state = initialState, payload) => {
         },
       };
 
+    case types.RATE_ARTICLE:
+      return { ...state, article_rate: payload.mydata };
     default:
       return state;
   }
