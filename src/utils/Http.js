@@ -191,7 +191,6 @@ class Http {
         this.fireHook('onPass', data);
         return Promise.resolve(data);
       }
-
       return this.handleFailure(data);
     });
   }

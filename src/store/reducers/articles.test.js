@@ -7,7 +7,7 @@ let articles;
 
 describe('Article reducer', () => {
   beforeEach(() => {
-    initialState = { all: [] };
+    initialState = { all: [], article_rate: {} };
     articles = [{ title: 'Some title' }, { title: 'some other titles' }];
   });
 
