@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 import { mapStateToProps } from 'store/helpers';
 import PropTypes from 'prop-types';
 import {
-  signUp,
   hideAuthModal,
   loginUser,
   socialAuthentication,
+  showResetPasswordModal,
 } from 'store/actions/authentication';
 import LoginModal from 'components/authentication/LoginModal';
 import SignupModal from 'components/authentication/SignupModal';
+import PasswordResetModal from 'components/authentication/PasswordResetModal';
 
 const AuthenticationModals = props => {
-  const { showModals, hideModal, signupHandler, signupData, login, handleAuthentication } = props;
+  const { showModals, hideModal, login, handleAuthentication, showResetPassword } = props;
 
   return (
     <React.Fragment>
@@ -21,13 +22,10 @@ const AuthenticationModals = props => {
         login={login}
         hideModal={hideModal}
         handleAuthentication={handleAuthentication}
+        showResetPassword={showResetPassword}
       />
-      <SignupModal
-        show={showModals.signup}
-        signupHandler={signupHandler}
-        signupData={signupData}
-        hideModal={hideModal}
-      />
+      <SignupModal show={showModals.signup} hideModal={hideModal} />
+      <PasswordResetModal show={showModals.passwordReset} hideModal={hideModal} />
     </React.Fragment>
   );
 };
@@ -38,15 +36,13 @@ export const handleResponse = dispatch => provider => response => {
 };
 
 export const mapActionsToProps = dispatch => ({
-  signupHandler: data => dispatch(signUp(data)),
   hideModal: name => dispatch(hideAuthModal(name)),
   login: user => dispatch(loginUser(user)),
+  showResetPassword: () => dispatch(showResetPasswordModal()),
   handleAuthentication: handleResponse(dispatch),
 });
 
 AuthenticationModals.propTypes = {
-  signupData: PropTypes.string.isRequired,
-  signupHandler: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   showModals: PropTypes.shape({
     login: PropTypes.bool.isRequired,
@@ -54,6 +50,7 @@ AuthenticationModals.propTypes = {
   }).isRequired,
   login: PropTypes.func.isRequired,
   handleAuthentication: PropTypes.func.isRequired,
+  showResetPassword: PropTypes.func.isRequired,
 };
 
 export default connect(

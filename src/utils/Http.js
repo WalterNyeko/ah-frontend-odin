@@ -191,7 +191,7 @@ class Http {
         this.fireHook('onPass', data);
         return Promise.resolve(data);
       }
-
+      /* istanbul ignore next */
       return this.handleFailure(data);
     });
   }

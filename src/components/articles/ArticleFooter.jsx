@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import defaultUserImage from 'user.png';
+import BookMarkButton from 'components/articles/Bookmark';
 
-const ArticleFooter = ({ article }) => {
+const ArticleFooter = ({ article, bookmarkHandler, slug, result }) => {
   const { author, updated_at: updatedAt, read_time: readTime } = article;
   const ago = distanceInWordsToNow(updatedAt, { includeSeconds: true, addSuffix: ' ago' });
 
@@ -16,7 +17,7 @@ const ArticleFooter = ({ article }) => {
       <div className="ml-3 d-flex flex-wrap justify-content-between flex-grow-1">
         <h6>
           By{' '}
-          <NavLink className="text-capitalize" to={`/users/${author.username}`}>
+          <NavLink className="text-capitalize" to={`profile/${author.username}`}>
             <strong>{author.username}</strong>
           </NavLink>
         </h6>
@@ -27,6 +28,7 @@ const ArticleFooter = ({ article }) => {
         <h6>
           {readTime} <strong>read</strong>
         </h6>
+        <BookMarkButton result={result} slug={slug} bookmarkHandler={bookmarkHandler} />
       </div>
     </div>
   );
@@ -34,6 +36,9 @@ const ArticleFooter = ({ article }) => {
 
 ArticleFooter.propTypes = {
   article: PropTypes.object.isRequired,
+  bookmarkHandler: PropTypes.func,
+  slug: PropTypes.any,
+  result: PropTypes.any,
 };
 
 export default ArticleFooter;

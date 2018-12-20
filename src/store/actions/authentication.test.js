@@ -1,12 +1,12 @@
 import types from 'store/types/authentication';
-
+import { prepareUrl } from 'utils/helpers';
 import {
   showAuthModal,
   hideAuthModal,
   loginUser,
   socialAuthentication,
-  signUp,
   logoutUser,
+  showResetPasswordModal,
 } from 'store/actions/authentication';
 import mockStore from 'tests/mockStore';
 
@@ -34,7 +34,8 @@ describe('Authentication actions', () => {
 
   test('authenticate user', () => {
     const data = { user: {} };
-    fetch.post('https://authors-haven-odin.herokuapp.com/api/google/', data);
+
+    fetch.post(prepareUrl('google/'), data);
 
     const expectedActions = [
       { type: 'LOGIN_USER', user: {} },
@@ -62,35 +63,14 @@ describe('Authentication actions', () => {
     });
   });
 
-  it('should signup user', () => {
-    const data = { user: {} };
-    fetch.post('https://authors-haven-odin.herokuapp.com/api/users/', data);
-
-    const expectedActions = [
-      { type: types.SIGNUP, payload: data },
-      { type: types.HIDE_MODAL, name: 'signup' },
-    ];
+  test('showResetModal returns the right type and name', () => {
     const store = mockStore({});
 
-    return store.dispatch(signUp()).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
+    store.dispatch(showResetPasswordModal());
 
-  it('should return errors on signup', () => {
-    const store = mockStore({});
-    const errors = {
-      email: ['email already in use'],
-      username: ['username already in use'],
-    };
-
-    fetch.post('https://authors-haven-odin.herokuapp.com/api/users/', {
-      status: 403,
-      body: { errors },
-    });
-
-    return store.dispatch(signUp()).then(() => {
-      expect(store.getActions()).toEqual([{ type: 'SIGNUP-ERRORS', errors }]);
-    });
+    expect(store.getActions()).toEqual([
+      { name: 'login', type: 'HIDE_AUTH_MODAL' },
+      { name: 'passwordReset', type: 'SHOW_AUTH_MODAL' },
+    ]);
   });
 });

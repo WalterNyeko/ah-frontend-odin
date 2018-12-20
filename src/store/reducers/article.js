@@ -28,6 +28,8 @@ export default (state = initialState, payload) => {
           comments: state.single.comments.concat(payload.comment),
         },
       };
+    case types.REPORT_ARTICLE:
+      return { ...state, reason: state.reason.concat(payload.reason) };
 
     default:
       return state;
