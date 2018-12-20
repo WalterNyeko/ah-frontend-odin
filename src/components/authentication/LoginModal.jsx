@@ -8,11 +8,12 @@ export const signedIn = (user, hideModal, login) => {
   hideModal('login');
 };
 
-const LoginModal = ({ show, hideModal, login, handleAuthentication }) => (
+const LoginModal = ({ show, hideModal, login, handleAuthentication, showResetPassword }) => (
   <Modal title="Login" show={show} size="medium" onHide={() => hideModal('login')}>
     <LoginForm
       successSubmit={({ user }) => signedIn(user, hideModal, login)}
       handleAuthentication={handleAuthentication}
+      showResetPassword={showResetPassword}
     />
   </Modal>
 );
@@ -22,6 +23,7 @@ LoginModal.propTypes = {
   show: PropTypes.bool.isRequired,
   login: PropTypes.func.isRequired,
   handleAuthentication: PropTypes.func.isRequired,
+  showResetPassword: PropTypes.func.isRequired,
 };
 
 export default LoginModal;

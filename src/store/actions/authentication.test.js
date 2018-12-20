@@ -6,6 +6,7 @@ import {
   loginUser,
   socialAuthentication,
   logoutUser,
+  showResetPasswordModal,
 } from 'store/actions/authentication';
 import mockStore from 'tests/mockStore';
 
@@ -59,5 +60,16 @@ describe('Authentication actions', () => {
     store.dispatch(logoutUser(history)).then(() => {
       expect(store.getActions()).toEqual([{ type: types.UNSET_USER }]);
     });
+  });
+
+  test('showResetModal returns the right type and name', () => {
+    const store = mockStore({});
+
+    store.dispatch(showResetPasswordModal());
+
+    expect(store.getActions()).toEqual([
+      { name: 'login', type: 'HIDE_AUTH_MODAL' },
+      { name: 'passwordReset', type: 'SHOW_AUTH_MODAL' },
+    ]);
   });
 });

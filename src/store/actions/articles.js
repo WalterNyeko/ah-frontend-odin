@@ -19,7 +19,15 @@ export const fetchArticleBySlug = slug => (dispatch, getState, http) =>
     http.get(commentUrl(article)).then(({ comment }) => dispatch(setComments(comment.results)));
   });
 
+// export const getAllArticles = () => (dispatch, getState, http) =>
+//   http
+//     .get('/articles')
+//     .then(({ article }) => dispatch(setArticles(sortByUpdatedAt(article.results))));
 export const getAllArticles = () => (dispatch, getState, http) =>
-  http
-    .get('/articles')
-    .then(({ article }) => dispatch(setArticles(sortByUpdatedAt(article.results))));
+  http.get('/articles').then(({ article }) => {
+    const toDate = ({ updated_at: updatedAt }) => new Date(updatedAt);
+    // sort articles by updated_at
+    const articles = article.sort((a, b) => toDate(b) - toDate(a));
+
+    return dispatch(setArticles(articles));
+  });

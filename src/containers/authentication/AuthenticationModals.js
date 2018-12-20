@@ -2,12 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps } from 'store/helpers';
 import PropTypes from 'prop-types';
-import { hideAuthModal, loginUser, socialAuthentication } from 'store/actions/authentication';
+import {
+  hideAuthModal,
+  loginUser,
+  socialAuthentication,
+  showResetPasswordModal,
+} from 'store/actions/authentication';
 import LoginModal from 'components/authentication/LoginModal';
 import SignupModal from 'components/authentication/SignupModal';
+import PasswordResetModal from 'components/authentication/PasswordResetModal';
 
 const AuthenticationModals = props => {
-  const { showModals, hideModal, login, handleAuthentication } = props;
+  const { showModals, hideModal, login, handleAuthentication, showResetPassword } = props;
 
   return (
     <React.Fragment>
@@ -16,8 +22,10 @@ const AuthenticationModals = props => {
         login={login}
         hideModal={hideModal}
         handleAuthentication={handleAuthentication}
+        showResetPassword={showResetPassword}
       />
       <SignupModal show={showModals.signup} hideModal={hideModal} />
+      <PasswordResetModal show={showModals.passwordReset} hideModal={hideModal} />
     </React.Fragment>
   );
 };
@@ -30,6 +38,7 @@ export const handleResponse = dispatch => provider => response => {
 export const mapActionsToProps = dispatch => ({
   hideModal: name => dispatch(hideAuthModal(name)),
   login: user => dispatch(loginUser(user)),
+  showResetPassword: () => dispatch(showResetPasswordModal()),
   handleAuthentication: handleResponse(dispatch),
 });
 
@@ -41,6 +50,7 @@ AuthenticationModals.propTypes = {
   }).isRequired,
   login: PropTypes.func.isRequired,
   handleAuthentication: PropTypes.func.isRequired,
+  showResetPassword: PropTypes.func.isRequired,
 };
 
 export default connect(
