@@ -1,5 +1,5 @@
 import types from 'store/types/authentication';
-
+import { prepareUrl } from 'utils/helpers';
 import {
   showAuthModal,
   hideAuthModal,
@@ -33,7 +33,8 @@ describe('Authentication actions', () => {
 
   test('authenticate user', () => {
     const data = { user: {} };
-    fetch.post('https://authors-haven-odin.herokuapp.com/api/google/', data);
+
+    fetch.post(prepareUrl('google/'), data);
 
     const expectedActions = [
       { type: 'LOGIN_USER', user: {} },

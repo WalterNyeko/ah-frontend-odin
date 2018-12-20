@@ -10,6 +10,7 @@ import CreateArticlePage from './pages/CreateArticlePage';
 import ShowArticle from './pages/ShowArticle';
 import UnAuthotized from './pages/UnAuthorized';
 import PageNotFound from './pages/PageNotFound';
+import CompleteReset from '../containers/authentication/CompleteReset';
 
 const App = () => (
   <Provider store={store}>
@@ -23,6 +24,7 @@ const App = () => (
           <Route path="/articles/create" exact component={CreateArticlePage} />
           <Route path="/articles/:slug" exact component={ShowArticle} />
           <Route path="/unauthorized" exact component={UnAuthotized} />
+          <Route path="/complete_reset" exact component={CompleteReset} />
           <Route component={PageNotFound} />
         </Switch>
       </div>

@@ -1,7 +1,7 @@
 import types from 'store/types/authentication';
 
 const initialstate = {
-  showModals: { login: false, signup: false },
+  showModals: { login: false, signup: false, passwordReset: false },
   user: JSON.parse(localStorage.getItem('user') || null),
 };
 

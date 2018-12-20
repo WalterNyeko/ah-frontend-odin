@@ -75,12 +75,19 @@ class FormComponent extends React.Component {
 
     // if the developer gave us the successSubmit callback, we will invoke it with
     // the returned response
+
+    let successivelySubmited = true;
+
     if (successSubmit) {
-      successSubmit(data);
+      successivelySubmited = successSubmit(data, this);
     }
 
     // Now that our job is done, we will have to clear the form's data
-    resetFormData(name);
+    //  if the form was successively submitted we clear it
+    //
+    if (successivelySubmited !== false) {
+      resetFormData(name);
+    }
 
     // return a promise just in case the dev has any other personal businesses to accomplish
     return Promise.resolve(data);
