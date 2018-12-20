@@ -45,12 +45,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
   "devDependencies": {
     "axios-mock-adapter": "^1.15.0",
     "enzyme": "^3.7.0",
@@ -84,10 +79,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,md}": [
-      "eslint src/ --ext .js --ext .jsx --fix",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,ts,tsx,json,md}": ["eslint src/ --ext .js --ext .jsx --fix", "git add"]
   },
   "jest": {
     "collectCoverageFrom": [
@@ -95,7 +87,7 @@
       "!src/index.js",
       "!src/tests/**",
       "!src/serviceWorker.js",
-      "!src/utils/notications.js"
+      "!src/utils/notifications.js"
     ]
   }
 }

@@ -2,30 +2,37 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import SignupForm from './SignupForm';
 
-jest.mock('react-notify-toast');
+describe('signup form tests', () => {
+  test('onSuccess hides the modal', () => {
+    const onSuccess = jest.fn();
+    const wrapper = shallow(<SignupForm onSuccess={onSuccess} />);
 
-const props = {
-  signUp: jest.fn(),
-  signupData: {
-    errors: {
-      username: ['Wrong username'],
-    },
-  },
-};
+    wrapper.prop('successSubmit')();
 
-describe('signup tests', () => {
-  let wrapper;
-
-  it('should render signup component', () => {
-    wrapper = shallow(<SignupForm {...props} signUp={jest.fn()} />);
-    wrapper.instance().onChange({ target: { username: '', email: '', password: '' } });
-    wrapper.instance().onSubmit({ preventDefault: jest.fn });
+    expect(onSuccess).toHaveBeenCalled();
   });
 
-  it('should return an error message', () => {
-    wrapper = shallow(<SignupForm {...props} signUp={jest.fn()} />);
-    const signup = wrapper.instance();
-    signup.setState({ confirmPassword: 'Hello!@#123' });
-    signup.onSubmit({ preventDefault: jest.fn });
+  test("it returns false if passwords don't match", () => {
+    const wrapper = shallow(<SignupForm onSuccess={jest.fn()} />);
+
+    expect(
+      wrapper.prop('beforeSubmit')(
+        {
+          password: 'some-password',
+          password_confirmation: 'different',
+        },
+        { updateErrors: jest.fn() },
+      ),
+    ).toBeFalsy();
+  });
+
+  test('it nests the form data in the user object', () => {
+    const wrapper = shallow(<SignupForm onSuccess={jest.fn()} />);
+    const data = {
+      password: 'password',
+      password_confirmation: 'password',
+      email: 'rolandmbasa@gmail.com',
+    };
+    expect(wrapper.prop('beforeSubmit')(data)).toEqual({ user: data });
   });
 });

@@ -11,21 +11,6 @@ export const loginUser = user => (dispatch, getState, http) => {
   dispatch(setUser(user));
 };
 
-export const signUp = user => (dispatch, getState, http) =>
-  http
-    .post('users/', { user })
-    .then(data => {
-      dispatch({ type: types.SIGNUP, payload: data });
-      dispatch(hideAuthModal('signup'));
-      window.Notify.success(
-        'You have been successfully registered .Please check your email and verify your account ',
-      );
-    })
-    .catch(({ errors }) => {
-      window.Notify.error(errors && errors.email ? errors.email[0] : errors.username[0]);
-      dispatch({ type: 'SIGNUP-ERRORS', errors });
-    });
-
 export const socialAuthentication = (url, accessToken) => (dispatch, getState, http) =>
   http.post(url, { user: { access_token: accessToken } }).then(({ user }) => {
     dispatch(loginUser(user));

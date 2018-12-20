@@ -2,17 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { mapStateToProps } from 'store/helpers';
 import PropTypes from 'prop-types';
-import {
-  signUp,
-  hideAuthModal,
-  loginUser,
-  socialAuthentication,
-} from 'store/actions/authentication';
+import { hideAuthModal, loginUser, socialAuthentication } from 'store/actions/authentication';
 import LoginModal from 'components/authentication/LoginModal';
 import SignupModal from 'components/authentication/SignupModal';
 
 const AuthenticationModals = props => {
-  const { showModals, hideModal, signupHandler, signupData, login, handleAuthentication } = props;
+  const { showModals, hideModal, login, handleAuthentication } = props;
 
   return (
     <React.Fragment>
@@ -22,12 +17,7 @@ const AuthenticationModals = props => {
         hideModal={hideModal}
         handleAuthentication={handleAuthentication}
       />
-      <SignupModal
-        show={showModals.signup}
-        signupHandler={signupHandler}
-        signupData={signupData}
-        hideModal={hideModal}
-      />
+      <SignupModal show={showModals.signup} hideModal={hideModal} />
     </React.Fragment>
   );
 };
@@ -38,15 +28,12 @@ export const handleResponse = dispatch => provider => response => {
 };
 
 export const mapActionsToProps = dispatch => ({
-  signupHandler: data => dispatch(signUp(data)),
   hideModal: name => dispatch(hideAuthModal(name)),
   login: user => dispatch(loginUser(user)),
   handleAuthentication: handleResponse(dispatch),
 });
 
 AuthenticationModals.propTypes = {
-  signupData: PropTypes.string.isRequired,
-  signupHandler: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired,
   showModals: PropTypes.shape({
     login: PropTypes.bool.isRequired,
