@@ -5,6 +5,7 @@ import DefaultLayout from 'containers/layout/DefaultLayout';
 import { fetchArticleBySlug, addComment } from 'store/actions/articles';
 import ArticleWithDetails from 'components/articles/ArticleWithDetails';
 import { mapStateToProps } from 'store/helpers';
+import bookMarkAction from 'store/actions/Bookmark';
 
 class ShowArticle extends React.Component {
   componentDidMount() {
@@ -15,7 +16,15 @@ class ShowArticle extends React.Component {
   }
 
   render() {
-    const { selectedArticle, loading, user, addArticleComment } = this.props;
+    const {
+      selectedArticle,
+      loading,
+      user,
+      addArticleComment,
+      bookmarkHandler,
+      match,
+      result,
+    } = this.props;
     return (
       <DefaultLayout>
         <div className="container">
@@ -24,6 +33,9 @@ class ShowArticle extends React.Component {
               article={selectedArticle}
               user={user}
               addComment={addArticleComment}
+              bookmarkHandler={bookmarkHandler}
+              slug={match.params.slug}
+              result={result}
             />
           )}
           {!selectedArticle && !loading && <h2 className="text-center">Article Not found</h2>}
@@ -40,10 +52,13 @@ ShowArticle.propTypes = {
   loading: PropTypes.bool.isRequired,
   user: PropTypes.any,
   addArticleComment: PropTypes.func,
+  bookmarkHandler: PropTypes.func,
+  result: PropTypes.any,
 };
 
 export const mapActionsToProps = dispatch => ({
   fetchSingleArticle: slug => dispatch(fetchArticleBySlug(slug)),
+  bookmarkHandler: slug => dispatch(bookMarkAction(slug)),
   addArticleComment: comment => dispatch(addComment(comment)),
 });
 
@@ -54,6 +69,7 @@ export default connect(
     selectedArticle: 'articles.single',
     loading: 'ui.loading',
     user: 'authentication.user',
+    result: 'bookMarkReducer.result',
   }),
   mapActionsToProps,
 )(ShowArticle);
