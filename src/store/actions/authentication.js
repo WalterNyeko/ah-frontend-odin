@@ -26,3 +26,8 @@ export const logoutUser = history => (dispatch, getState, http) =>
 
     return dispatch(unsetUser());
   });
+
+export const showResetPasswordModal = () => dispatch => {
+  dispatch(hideAuthModal('login'));
+  return dispatch(showAuthModal('passwordReset'));
+};

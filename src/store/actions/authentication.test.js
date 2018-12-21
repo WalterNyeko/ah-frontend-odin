@@ -1,11 +1,12 @@
 import types from 'store/types/authentication';
-
+import { prepareUrl } from 'utils/helpers';
 import {
   showAuthModal,
   hideAuthModal,
   loginUser,
   socialAuthentication,
   logoutUser,
+  showResetPasswordModal,
 } from 'store/actions/authentication';
 import mockStore from 'tests/mockStore';
 
@@ -33,7 +34,8 @@ describe('Authentication actions', () => {
 
   test('authenticate user', () => {
     const data = { user: {} };
-    fetch.post('https://authors-haven-odin.herokuapp.com/api/google/', data);
+
+    fetch.post(prepareUrl('google/'), data);
 
     const expectedActions = [
       { type: 'LOGIN_USER', user: {} },
@@ -59,5 +61,16 @@ describe('Authentication actions', () => {
     store.dispatch(logoutUser(history)).then(() => {
       expect(store.getActions()).toEqual([{ type: types.UNSET_USER }]);
     });
+  });
+
+  test('showResetModal returns the right type and name', () => {
+    const store = mockStore({});
+
+    store.dispatch(showResetPasswordModal());
+
+    expect(store.getActions()).toEqual([
+      { name: 'login', type: 'HIDE_AUTH_MODAL' },
+      { name: 'passwordReset', type: 'SHOW_AUTH_MODAL' },
+    ]);
   });
 });
