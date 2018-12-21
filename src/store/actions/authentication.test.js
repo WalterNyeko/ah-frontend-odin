@@ -8,6 +8,7 @@ import {
   logoutUser,
 } from 'store/actions/authentication';
 import mockStore from 'tests/mockStore';
+import { prepareUrl } from 'utils/helpers';
 
 describe('Authentication actions', () => {
   afterEach(() => {
@@ -33,8 +34,7 @@ describe('Authentication actions', () => {
 
   test('authenticate user', () => {
     const data = { user: {} };
-    fetch.post('https://authors-haven-odin.herokuapp.com/api/google/', data);
-
+    fetch.post(prepareUrl('google/'), data);
     const expectedActions = [
       { type: 'LOGIN_USER', user: {} },
       { name: 'login', type: 'HIDE_AUTH_MODAL' },

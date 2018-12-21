@@ -11,6 +11,7 @@ import {
   setSingle,
   fetchArticleBySlug,
   setComments,
+  rateArticle,
 } from 'store/actions/articles';
 
 describe('Article action tests', () => {
@@ -56,5 +57,52 @@ describe('Article action tests', () => {
     const comments = Factory.of('article').make(2);
 
     expect(setComments(comments)).toEqual({ type: types.SET_COMMENTS, comments });
+  });
+
+  test('it rates the article', () => {
+    const store = mockStore({ rateData: { article_rate: {} } });
+    const expectedActions = [{ type: types.RATE_ARTICLE }];
+
+    fetch.restore();
+    fetch.post(prepareUrl(`articles/what-is-my-name-354647/ratings/`), {
+      body: { id: 1 },
+    });
+
+    store.dispatch(rateArticle('what-is-my-name-354647', 4)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+      fetch.restore();
+    });
+  });
+
+  test('it fails to rate the article for any other reason', () => {
+    const store = mockStore({ rateData: { article_rate: {} } });
+    const expectedActions = { type: types.RATE_ARTICLE };
+
+    fetch.restore();
+    fetch.post(prepareUrl(`articles/what-is-my-name-354647/ratings/`), 400);
+
+    store.dispatch(rateArticle('what-is-my-name-354647', 4)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+      fetch.restore();
+    });
+  });
+
+  test('it fails to rate the article due to repeated rating detected', () => {
+    const store = mockStore({ rateData: { article_rate: {} } });
+    const expectedActions = [{ type: types.RATE_ARTICLE }];
+
+    fetch.restore();
+    fetch.post(prepareUrl(`articles/what-is-my-name-354647/ratings/`), 400, {
+      body: {
+        errors: {
+          error: ['You cannot rate this article more than once'],
+        },
+      },
+    });
+
+    store.dispatch(rateArticle('what-is-my-name-354647', 4)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+      fetch.restore();
+    });
   });
 });
