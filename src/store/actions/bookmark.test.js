@@ -1,7 +1,8 @@
 import mockStore from 'tests/mockStore';
 import types from 'store/types/articles';
-import bookMarkAction from './Bookmark';
 import { prepareUrl } from 'utils/helpers';
+import bookMarkAction from './Bookmark';
+
 describe('bookmark actions', () => {
   it('should bookmark article', () => {
     let slug;

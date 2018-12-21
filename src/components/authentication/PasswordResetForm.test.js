@@ -1,12 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PasswordRsesetForm from './PasswordResetForm';
-import { successSubmit } from './PasswordResetForm';
+import PasswordRsesetForm, { successSubmit } from './PasswordResetForm';
 
 describe('PasswordRsesetForm', () => {
   test('test complete password reset form renders correctly', () => {
     const data = { email: 'mytest@gmail.com' };
-    const wrapper = shallow(<PasswordRsesetForm successSubmit={jest.fn()} />);
+    const wrapper = shallow(<PasswordRsesetForm successSubmit={jest.fn()} hideModal={jest.fn()} />);
     expect(wrapper.prop('beforeSubmit')(data)).toEqual(data);
   });
   it('returns false when password reset link failed to send', () => {

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import DefaultLayout from 'containers/layout/DefaultLayout';
 import { fetchArticleBySlug, addComment } from 'store/actions/articles';
 import ArticleWithDetails from 'components/articles/ArticleWithDetails';
+import ShareButtons from 'components/articles/ShareButtons';
 import { mapStateToProps } from 'store/helpers';
 import bookMarkAction from 'store/actions/Bookmark';
 
@@ -29,14 +30,17 @@ class ShowArticle extends React.Component {
       <DefaultLayout>
         <div className="container">
           {selectedArticle && (
-            <ArticleWithDetails
-              article={selectedArticle}
-              user={user}
-              addComment={addArticleComment}
-              bookmarkHandler={bookmarkHandler}
-              slug={match.params.slug}
-              result={result}
-            />
+            <React.Fragment>
+              <ShareButtons article={selectedArticle} />
+              <ArticleWithDetails
+                article={selectedArticle}
+                user={user}
+                addComment={addArticleComment}
+                bookmarkHandler={bookmarkHandler}
+                slug={match.params.slug}
+                result={result}
+              />
+            </React.Fragment>
           )}
           {!selectedArticle && !loading && <h2 className="text-center">Article Not found</h2>}
         </div>

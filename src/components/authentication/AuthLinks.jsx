@@ -5,11 +5,13 @@ import { NavLink } from 'react-router-dom';
 
 const AuthLinks = ({ user, logout }) => (
   <React.Fragment>
-    <li className="nav-item d-flex align-items-center justify-content-between">
+    <li className="nav-item d-flex align-items-center">
       <div className="bg-white  rounded rounded-circle">
         <img src={defaultUserImage} alt={user.username} className="user-avatar" />
       </div>
-      <NavLink className="text-white ml-2" to={`profile/${user.username} `}>
+    </li>
+    <li className="nav-item">
+      <NavLink className="text-white ml-2 nav-link" to={`/profile/${user.username} `}>
         {user.username}
       </NavLink>
     </li>

@@ -155,8 +155,12 @@ label.has-input {
   }
 }
 
-.social-sec {
-  align-self: auto;
-  padding: 2vw;
-  // position: fixed;
+.social-buttons {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

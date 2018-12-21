@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CompletePasswordResetForm from './CompletePasswordResetForm';
-import { successSubmit } from './CompletePasswordResetForm';
+import CompletePasswordResetForm, { successSubmit } from './CompletePasswordResetForm';
 
 describe('CompletePasswordResetForm', () => {
   test('test complete password reset form renders correctly', () => {
@@ -16,7 +15,6 @@ describe('CompletePasswordResetForm', () => {
 
   it('returns true when password is updated successfully', () => {
     const sucess = successSubmit({ message: 'Password Successfully Updated!' });
-    console.log('expecting true', sucess);
     expect(sucess).toEqual(true);
   });
 });

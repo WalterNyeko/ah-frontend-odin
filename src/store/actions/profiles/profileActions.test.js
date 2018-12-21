@@ -26,7 +26,10 @@ describe('async actions', () => {
       status: 201,
       body: { data },
     });
-    const expectedActions = [{ type: types.UPDATE_PROFILE, payload: { data } }];
+    const expectedActions = [
+      { type: types.UPDATE_PROFILE, payload: { data } },
+      { type: types.FETCH_PROFILE, payload: { data } },
+    ];
     return store.dispatch(updateProfile(data, username)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });

@@ -15,5 +15,6 @@ export const updateProfile = (profile, username) => (dispatch, getState, http) =
     .put(`profile/${username}`, { bio: profile.bio, image: profile.image })
     .then(data => {
       dispatch({ type: types.UPDATE_PROFILE, payload: data });
+      dispatch({ type: types.FETCH_PROFILE, payload: data });
       window.Notify.success('Profile updated');
     });

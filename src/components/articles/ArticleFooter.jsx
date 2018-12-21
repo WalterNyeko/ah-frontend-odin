@@ -28,7 +28,9 @@ const ArticleFooter = ({ article, bookmarkHandler, slug, result }) => {
         <h6>
           {readTime} <strong>read</strong>
         </h6>
-        <BookMarkButton result={result} slug={slug} bookmarkHandler={bookmarkHandler} />
+        {bookmarkHandler && (
+          <BookMarkButton result={result} slug={slug} bookmarkHandler={bookmarkHandler} />
+        )}
       </div>
     </div>
   );

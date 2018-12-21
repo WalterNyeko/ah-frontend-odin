@@ -7,6 +7,7 @@ const renderComment = (comment, index) => <Comment comment={comment} key={index}
 
 const Comments = ({ article, user, addComment }) => (
   <div className="card mt-2">
+    <div className="card-header">Comments</div>
     <div className="card-body">{article.comments.map(renderComment)}</div>
     <div className="card-footer">
       <NewComment user={user} addComment={addComment} article={article} />
