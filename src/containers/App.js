@@ -10,6 +10,7 @@ import CreateArticlePage from './pages/CreateArticlePage';
 import ShowArticle from './pages/ShowArticle';
 import UnAuthotized from './pages/UnAuthorized';
 import PageNotFound from './pages/PageNotFound';
+import SearchComponent from './pages/SearchComponent';
 
 const App = () => (
   <Provider store={store}>
@@ -19,6 +20,7 @@ const App = () => (
         <AuthenticationModals />
         <Switch>
           <Route path="/" exact component={HomePage} />
+          <Route path="/search" exact component={SearchComponent} />
           <Route path="/articles" exact component={ArticlesPage} />
           <Route path="/articles/create" exact component={CreateArticlePage} />
           <Route path="/articles/:slug" exact component={ShowArticle} />
