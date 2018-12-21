@@ -1,5 +1,4 @@
 import types from 'store/types/authentication';
-import { prepareUrl } from 'utils/helpers';
 import {
   showAuthModal,
   hideAuthModal,
@@ -9,6 +8,7 @@ import {
   showResetPasswordModal,
 } from 'store/actions/authentication';
 import mockStore from 'tests/mockStore';
+import { prepareUrl } from 'utils/helpers';
 
 describe('Authentication actions', () => {
   afterEach(() => {
