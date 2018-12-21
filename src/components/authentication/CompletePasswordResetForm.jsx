@@ -7,9 +7,8 @@ export const successSubmit = data => {
     return false;
   }
   window.Notify.success(data.message);
-  
+
   return true;
-  
 };
 
 const CompletePasswordResetForm = () => (

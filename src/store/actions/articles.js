@@ -1,5 +1,4 @@
 import types from 'store/types/articles';
-import { sortByUpdatedAt } from 'store/helpers';
 import { commentUrl } from 'utils/articles';
 
 export const addArticle = article => ({ type: types.ADD_ARTICLE, article });
@@ -19,10 +18,6 @@ export const fetchArticleBySlug = slug => (dispatch, getState, http) =>
     http.get(commentUrl(article)).then(({ comment }) => dispatch(setComments(comment.results)));
   });
 
-// export const getAllArticles = () => (dispatch, getState, http) =>
-//   http
-//     .get('/articles')
-//     .then(({ article }) => dispatch(setArticles(sortByUpdatedAt(article.results))));
 export const getAllArticles = () => (dispatch, getState, http) =>
   http.get('/articles').then(({ article }) => {
     const toDate = ({ updated_at: updatedAt }) => new Date(updatedAt);

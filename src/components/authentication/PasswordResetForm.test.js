@@ -6,10 +6,8 @@ import { successSubmit } from './PasswordResetForm';
 describe('PasswordRsesetForm', () => {
   test('test complete password reset form renders correctly', () => {
     const data = { email: 'mytest@gmail.com' };
-    const hideModal = jest.fn;
     const wrapper = shallow(<PasswordRsesetForm successSubmit={jest.fn()} />);
     expect(wrapper.prop('beforeSubmit')(data)).toEqual(data);
-    // expect(wrapper.prop('successSubmit')()).toEqual(data);
   });
   it('returns false when password reset link failed to send', () => {
     const sucessStatus = successSubmit({ status: 0 });

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import CompletePasswordResetForm from '../../components/authentication/CompletePasswordResetForm';
 import DefaultLayout from '../layout/DefaultLayout';
-class CompleteReset extends Component {
 
-  
+class CompleteReset extends Component {
   render() {
     return (
       <div>

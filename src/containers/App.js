@@ -10,7 +10,7 @@ import CreateArticlePage from './pages/CreateArticlePage';
 import ShowArticle from './pages/ShowArticle';
 import UnAuthotized from './pages/UnAuthorized';
 import PageNotFound from './pages/PageNotFound';
-import CompleteReset from '../containers/authentication/CompleteReset';
+import CompleteReset from './authentication/CompleteReset';
 
 const App = () => (
   <Provider store={store}>

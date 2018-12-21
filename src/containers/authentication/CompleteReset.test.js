@@ -6,10 +6,8 @@ import store from '../../store/index';
 import CompleteReset from './CompleteReset';
 
 describe('Complete Password Reset', () => {
-  let wrapper;
-
   it('tests that the complete reset component renders correctly', () => {
-    wrapper = mount(
+    const wrapper = mount(
       <MemoryRouter>
         <Provider store={store}>
           <CompleteReset />

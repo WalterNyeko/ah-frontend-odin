@@ -15,7 +15,7 @@ describe('CompletePasswordResetForm', () => {
   });
 
   it('returns true when password is updated successfully', () => {
-    const sucess = successSubmit({message: 'Password Successfully Updated!' });
+    const sucess = successSubmit({ message: 'Password Successfully Updated!' });
     console.log('expecting true', sucess);
     expect(sucess).toEqual(true);
   });
