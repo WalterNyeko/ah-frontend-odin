@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TagList from './TagList';
 import ArticleFooter from './ArticleFooter';
 import Comments from './comments/Comments';
+import RateArticle from '../../containers/RateArticle';
 
 const Article = ({ article, user, addComment, bookmarkHandler, slug, result }) => {
   const { title, body } = article;
@@ -24,6 +25,10 @@ const Article = ({ article, user, addComment, bookmarkHandler, slug, result }) =
             slug={slug}
             bookmarkHandler={bookmarkHandler}
           />
+
+          <div className="float-right">
+            <RateArticle rate={article.average_rating} slug={article.slug} />
+          </div>
         </div>
       </div>
 

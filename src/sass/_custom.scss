@@ -147,3 +147,33 @@ label.has-input {
   background-color: #f2f2f2;
   padding: 20px;
 }
+.star-rating {
+  border: solid 0px #ccc;
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 1.2em;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 4em;
+}
+
+.star-rating input {
+  display: none;
+}
+
+.star-rating label {
+  color: black;
+  cursor: pointer;
+}
+.star-rating {
+  color: #f90;
+  cursor: pointer;
+}
+.star-rating :checked ~ label {
+  color: #f90;
+}
+
+.star-rating :hover {
+  color: #fc0;
+}

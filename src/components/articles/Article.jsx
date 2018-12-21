@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { strLimit } from 'utils/helpers';
 import TagList from './TagList';
 import ArticleFooter from './ArticleFooter';
+import ArticleRate from '../../containers/ArticleRate';
+import UnRatedArticle from '../../containers/UnRatedArticle';
 
 const Article = ({ article }) => {
   const { title, body, slug } = article;
@@ -22,6 +24,13 @@ const Article = ({ article }) => {
       </div>
       <div className="card-footer">
         <ArticleFooter article={article} />
+        <div className="float-right">
+          {article.average_rating ? (
+            <ArticleRate rate={article.average_rating} />
+          ) : (
+            <UnRatedArticle />
+          )}
+        </div>
       </div>
     </div>
   );
