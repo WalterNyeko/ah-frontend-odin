@@ -93,3 +93,55 @@ label.has-input {
       width:2rem;
   }
 }
+.profile-pic {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.edit-profile-pic {
+  display: inline-block;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.profile-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+  height: 600px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+.bio {
+  color: grey;
+  font-size: 18px;
+}
+.username {
+  color: black;
+  text-decoration: none;
+  font-size: 40px;
+}
+.profile-text-fields {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 25px;
+}
+.profile-div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}

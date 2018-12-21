@@ -5,6 +5,7 @@ import authentication from './authentication';
 import forms from './forms';
 import filters from './filters';
 import bookMarkReducer from './Bookmark';
+import profiles from './profilesReducer';
 
 export default combineReducers({
   ui,
@@ -13,4 +14,5 @@ export default combineReducers({
   forms,
   filters,
   bookMarkReducer,
+  profiles,
 });
