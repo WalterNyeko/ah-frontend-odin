@@ -13,6 +13,7 @@ import PageNotFound from './pages/PageNotFound';
 import SearchComponent from './pages/SearchComponent';
 import SocialButtons from '../components/authentication/SocialButtons';
 import ProfilesContainer from './profiles/profilesContainer';
+import CompleteReset from './authentication/CompleteReset';
 
 const App = () => (
   <Provider store={store}>
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/unauthorized" exact component={UnAuthotized} />
           <Route path="/profile/:username" exact component={ProfilesContainer} />
           <Route path="/social" exact component={SocialButtons} />
+          <Route path="/complete_reset" exact component={CompleteReset} />
           <Route component={PageNotFound} />
         </Switch>
       </div>
