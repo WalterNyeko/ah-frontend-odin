@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import defaultUserImage from 'user.png';
+import { NavLink } from 'react-router-dom';
 
 const AuthLinks = ({ user, logout }) => (
   <React.Fragment>
@@ -8,7 +9,9 @@ const AuthLinks = ({ user, logout }) => (
       <div className="bg-white  rounded rounded-circle">
         <img src={defaultUserImage} alt={user.username} className="user-avatar" />
       </div>
-      <h4 className="text-white ml-2">{user.username}</h4>
+      <NavLink className="text-white ml-2" to={`profile/${user.username} `}>
+        {user.username}
+      </NavLink>
     </li>
     <li className="nav-item">
       <button className="nav-link text-light btn-link" onClick={logout}>

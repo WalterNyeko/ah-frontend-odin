@@ -9,7 +9,15 @@ const user = Factory.of('user').make();
 describe('NavBar', () => {
   test('It shows the Auth Links if a user is authenticated', () => {
     const wrapper = shallow(
-      <NavBar showModal={jest.fn()} user={user} logout={jest.fn()} history={{}} />,
+      <NavBar
+        showModal={jest.fn()}
+        user={user}
+        logout={jest.fn()}
+        history={{}}
+        updateSearchTitle={jest.fn()}
+        filterSearchResults={jest.fn()}
+        match={{ path: '/search' }}
+      />,
     );
 
     expect(wrapper.find('AuthLinks')).toHaveLength(1);
@@ -20,7 +28,15 @@ describe('NavBar', () => {
   });
   test('invokes logout without crashing', () => {
     const wrapper = shallow(
-      <NavBar showModal={jest.fn()} user={user} logout={jest.fn()} history={{}} />,
+      <NavBar
+        showModal={jest.fn()}
+        user={user}
+        logout={jest.fn()}
+        history={{}}
+        updateSearchTitle={jest.fn()}
+        filterSearchResults={jest.fn()}
+        match={{ path: '/search' }}
+      />,
     );
 
     expect(() => wrapper.find('AuthLinks').prop('logout')()).not.toThrow();

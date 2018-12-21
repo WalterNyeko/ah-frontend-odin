@@ -8,7 +8,7 @@ import TagList from './TagList';
 import ArticleFooter from './ArticleFooter';
 import Comments from './comments/Comments';
 
-const Article = ({ article, user, addComment }) => {
+const Article = ({ article, user, addComment, bookmarkHandler, slug, result }) => {
   const { title, body } = article;
   const url = `https://ah-frontend-odin-staging.herokuapp.com/articles/${article.slug}`;
 
@@ -54,7 +54,13 @@ const Article = ({ article, user, addComment }) => {
             </div>
           </div>
           <div className="card-footer">
-            <ArticleFooter article={article} user={user} />
+            <ArticleFooter
+              article={article}
+              user={user}
+              result={result}
+              slug={slug}
+              bookmarkHandler={bookmarkHandler}
+            />
           </div>
           <h3>Comments</h3>
           <Comments article={article} user={user} addComment={addComment} />
@@ -72,6 +78,9 @@ Article.propTypes = {
   article: PropTypes.object.isRequired,
   user: PropTypes.shape(),
   addComment: PropTypes.func.isRequired,
+  bookmarkHandler: PropTypes.func,
+  slug: PropTypes.any,
+  result: PropTypes.any,
 };
 
 export default Article;
