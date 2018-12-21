@@ -147,3 +147,16 @@ label.has-input {
   background-color: #f2f2f2;
   padding: 20px;
 }
+
+.social {
+  &:hover {
+    cursor: pointer;
+    animation-name: pulse;
+  }
+}
+
+.social-sec {
+  align-self: auto;
+  padding: 2vw;
+  // position: fixed;
+}
